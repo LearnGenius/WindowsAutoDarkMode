@@ -1,13 +1,13 @@
 # WindowsAutoDarkMode
-Windows Auto Dark Mode (Batch) | Windows自动夜间模式批处理脚本
+Windows Auto Dark Mode (VBScript) | Windows自动夜间模式批处理脚本
 
 # Project To-Do
+- [x] 询问是否要重启资源管理器
+- [x] 添加自定义日出日落时间时间
 - [ ] 切换主题时修改背景
 - [ ] 添加服务自动注册功能
-- [ ] 做成exe
-- [ ] 添加自定义背景位置
-- [ ] 添加自定义时间
 - [ ] 获取计算机定位日出日落时间
+- [ ] ~~做成exe~~
 
 # Usage
 ## A. 手动执行
@@ -27,7 +27,11 @@ Windows Auto Dark Mode (Batch) | Windows自动夜间模式批处理脚本
       2. 开始任务：登陆时：按需设置
    3. 操作：
       1. 操作：启动程序
-      2. 程序或脚本：添加本项目文件
+      2. **程序或脚本：添加本项目文件**
    4. 条件：全部取消勾选
    5. 设置：按需设置
 5. 完成。
+
+# 更新记录 | Update
+2024年4月22日
+修改为 vbs 语言，能够通过 MsgBox 更方便用户交互是否重启资源管理器。
