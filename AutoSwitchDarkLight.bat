@@ -1,57 +1,65 @@
 @ECHO OFF
 
-REM Set Static Rise&Set Time
+:: Set Static Rise&Set Time
 set "sunrise=8"
 set "sunset=18"
 
-REM Get Current Time (Only the first 2 digits.)
+:: Get Current Time (Only the first 2 digits.)
 set "now=%time:~0,2%"
 
-REM Output Parameters
+:: Output Parameters
 echo %now% , %sunrise% , %sunset%
 
-REM Compare Current Time With Rise&Set Time.
+:: Compare Current Time With Rise&Set Time.
 if %now% GEQ %sunrise% (
-    REM 8¡ª¡ª24 o'clock
+    :: 8â€”â€”24 o'clock
     if %now% LSS %sunset% (
-        REM 8¡ª¡ª18 o'clock
-        echo °×Ìì£¡
+        :: 8â€”â€”18 o'clock
+        echo ç™½å¤©ï¼
         Call :LightMode
     ) else (
-        REM 18¡ª¡ª24 o'clock
-        echo ÍíÉÏ£¡
+        :: 18â€”â€”24 o'clock
+        echo æ™šä¸Šï¼
         Call :DarkMode
     )
 ) else (
-    REM 0¡ª¡ª8 o'clock
-    echo Áè³¿£¡
+    :: 0â€”â€”8 o'clock
+    echo å‡Œæ™¨ï¼
     Call :DarkMode
 )
 
-Call :ReloadExplorer
+:: Prompt user to restart Explorer
+msg * æç¤ºï¼šæ˜¯å¦ç»§ç»­æ‰§è¡Œæ“ä½œï¼Ÿ
+set /p choice=è¯·è¾“å…¥é€‰é¡¹ï¼ˆY/Nï¼‰ï¼š
+if /i "%choice%"=="Y" (
+    call :execute_function
+) else (
+    echo ç”¨æˆ·å–æ¶ˆäº†æ“ä½œã€‚
+)
 
-echo ÇĞ»»Íê³É£¡
+
+echo åˆ‡æ¢å®Œæˆï¼
 goto :eof
 
 
-REM Reload Explorer
+:: Reload Explorer
 :ReloadExplorer
 taskkill /f /im explorer.exe
 start explorer.exe
 goto:eof
 
-REM Turn On Light Mode
+:: Turn On Light Mode
 :LightMode
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" /v AppsUseLightTheme /t REG_DWORD /d 1 /f
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" /v SystemUsesLightTheme /t REG_DWORD /d 1 /f
-echo ÒÑÇĞ»»µ½Light Mode.
+echo å·²åˆ‡æ¢åˆ°Light Mode.
 goto:eof
 
-REM Turn On Dark Mode
+:: Turn On Dark Mode
 :DarkMode
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" /v AppsUseLightTheme /t REG_DWORD /d 0 /f
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" /v SystemUsesLightTheme /t REG_DWORD /d 0 /f
-echo ÒÑÇĞ»»µ½Dark Mode.
+echo å·²åˆ‡æ¢åˆ°Dark Mode.
 goto:eof
 
 EXIT
