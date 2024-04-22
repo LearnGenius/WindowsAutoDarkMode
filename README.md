@@ -33,5 +33,6 @@ Windows Auto Dark Mode (VBScript) | Windows自动夜间模式批处理脚本
 5. 完成。
 
 # 更新记录 | Update
-2024年4月22日
-修改为 vbs 语言，能够通过 MsgBox 更方便用户交互是否重启资源管理器。
+2024年4月22日 v0.0.2
+- 修改为 vbs 语言，能够通过 MsgBox 更方便用户交互是否重启资源管理器。
+- 更新了两种方法来切换主题，直接应用 .theme 文件和修改注册表的 SystemTheme 和 AppTheme
